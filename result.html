@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Result Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="stylee.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    /* ===== Loader ===== */
+    .loader-screen {
+      position: fixed;
+      inset: 0;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #334155;
+      border-top: 6px solid #38bdf8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== Card ===== */
+    .card {
+      background: #fff;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 18px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      animation: fadeUp 0.7s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== Logo ===== */
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 12px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 22px;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* ===== Button ===== */
+    .redirect-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .redirect-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.55);
+    }
+
+    .trust {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    footer span {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* ===== TOP CENTER HEADING ===== */
+.page-header {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+  width: 100%;
+  pointer-events: none; /* click block na ho */
+}
+
+.page-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e5e7eb;
+  letter-spacing: 0.5px;
+  text-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 18px;
+  }
+}
+
+
+    
+  </style>
+
+  <!-- FAVICON (just replace favicon.ico file) -->
+<!-- <link rel="icon" href="logo.png" type="image/x-icon"> -->
+<link rel="shortcut icon" href="logo.png" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+  <div class="bg-effects">
+  <span class="blob one"></span>
+  <span class="blob two"></span>
+  <span class="blob three"></span>
+</div>
+
+
+  <!-- Loader
+  <div class="loader-screen" id="loader">
+    <div class="loader"></div>
+  </div> -->
+
+  <header class="page-header">
+  <h1>Student Result Portal</h1>
+</header>
+
+
+  <!-- Main Card -->
+  <div class="card">
+    
+    <div class="logo">
+      <!-- SCHOOL LOGO -->
+      <img src="logo.png" alt="School Logo">
+    </div>
+
+    <h1>Student Result Portal</h1>
+    <div class="subtitle">Official Result Access</div>
+
+    <div class="info">
+      Click the button below to securely access and download your
+      academic result from the official school result website.
+    </div>
+
+    <!-- Redirect Button -->
+    <a href="https://sbteonline.bihar.gov.in/login" 
+       target="_blank" 
+       class="redirect-btn"
+       onclick="showLoader()">
+      View & Download Result
+    </a>
+
+    <div class="trust">
+      🔒 Secure • Fast • Official Source
+    </div>
+
+    <footer>
+      Designed by <span>Ashutosh Raj</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // Initial loader hide
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 800);
+    });
+
+    // Loader on redirect click
+    function showLoader() {
+      document.getElementById("loader").style.display = "flex";
+    }
+  </script>
+
+</body>
+</html>
